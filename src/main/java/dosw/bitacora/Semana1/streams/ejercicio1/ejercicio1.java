@@ -1,3 +1,5 @@
+package dosw.bitacora.Semana1.streams.ejercicio1;
+
 import java.util.List;
 
 public class ejercicio1 {
