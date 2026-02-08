@@ -28,7 +28,6 @@ public class ClassicDollBuilder implements ToyDollBuilder{
     @Override
     public void buildLegs() {
         doll.setLegs("Normal Legs");
-
     }
 
     @Override
