@@ -8,4 +8,7 @@ public abstract class PaymentProcessor {
         Payment payment = createPayment();
         payment.pay(amount);
     }
+
 }
+
+
