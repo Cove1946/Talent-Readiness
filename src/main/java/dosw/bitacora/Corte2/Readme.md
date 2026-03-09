@@ -44,12 +44,22 @@ siguiente
 #### 2. Obtener todos los nombres de estudiantes ordenados Alfabeticamente
 - Generamos el codigo, usamos la funcion map para extraer el nombre del estudiante para luego usar sorted el cual por
 defecto ordena alfabeticamente o de mayor a menor, para por ultimo usar el ForEach para imprimir los nombres
-![img.png](img8.png)
+![img.png](Imagens/img8.png)
 - Al ejecutar el codigo tenemos como resultado lo siguiente 
-![img.png](img9.png)
+![img.png](Imagens/img9.png)
 - Generamos el commit y lo subimos al repositorio
+![img.png](Imagens/img10.png)
 
 
+#### Actualizacion
+- Con el fin de que el codigo se vea de una forma mas limpia se decidio hacer los diferentes puntos como funciones de
+una clase llamada StudentExercise, de esta forma se hace la logica de cada punto en esta clase y en el main solo se hace 
+el llamado de dicha clase, ademas de una breve descripcion para saber que de que ejercicio se trata
+![img.png](Imagens/img11.png)
+![img_1.png](Imagens/img_12.png)
+![img.png](Imagens/img13.png)
+
+#### 3. Calcular el promedio general de todos los score existentes en el sistema
 
 
 
