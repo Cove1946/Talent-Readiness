@@ -1,0 +1,52 @@
+# Bitacora semana 1
+
+### Actividades a realizar
+Se tiene el siguiente modelo 
+![img.png](Imagens/img.png)
+![img.png](Imagens/img1.png)
+
+Realizar el siguiente trabajo:
+
+1. Obtener todos los estudiantes del equipo DORADO -> Retornar una lista de estudiantes cuyo team sea DORADO
+2. Obtener todos los nombres de estudiantes ordenados Alfabeticamente
+3. Calcular el promedio general de todos los score existentes en el sistema
+4. Retornar por estudiante el primedio por materia -> Retornar un Map<String, Double> donde la clave es la materia y el valor el promedio
+5. Retornar el estudiante cuyo promedio general sea el mas alto del curso
+6. Retornar las materias reprobadas por equipo -> Retornar Map <String, Long> donde la clave es el nombre del equipo y el valor la cantidad total de materias reprobadas
+7. Top 3 estudiantes con mas materias aprobadas -> Retornar lista ordenada de manera descendente
+8. Agrupar estudiantes por estado academico: Clasificarlos por ALTO RENDIMIENTO -> Promedio >=4,5 , REGULAR -> Promedio entre 3,5 y 4.49, RIESGO -> promedio < 3,5
+9. Obtener la materia con mas reprobaciones
+10. Tome solo estudiantes del equipo DORADO, Obtenga todas sus notas, Filtre solo notas aprobadas, Agrupe por materia, Calcule promedio por materia, Ordene descendente por promedio, Retorne un LinkedHashMap preservando orden.
+11. Propuesta realizada por ustedes y explicada
+12. Propuesta realizada por ustedes y explicada
+
+
+
+### Adjuntar evidencias 
+#### 1. Obtener todos los estudiantes del equipo DORADO -> Retornar una lista de estudiantes cuyo team sea DORADO
+- Primero se realizaron las clases propuestas por el ejercicio es decir la clase Student y Grade con sus respectivos
+constructores, geters y sters.
+![img.png](Imagens/img2.png)
+![img_1.png](Imagens/img_3.png)
+- Acontinuacion se genero una clase la cual va a contener una lista de diferentes estudiantes con su respectiva lista 
+de notas, de esta forma podemos reutilizar dicha lista para realizar los diferentes ejercicios propuestos
+![img.png](Imagens/img4.png)
+- Despues se genero el codigo que resuelve dicho ejercicio
+![img.png](Imagens/img5.png)
+- Como se puede apreciar en la imagen no es necesario crear una lista de estudiantes ya que esta ya se encuentra en la
+clase de StudentsInfo, por lo cual solo debemos hacer uso del get y convertirlo a stream, como resultado tenemos lo
+siguiente
+![img.png](Imagens/img6.png)
+- Realizamos el respectivo Commit y lo subimos al repositorio
+![img.png](Imagens/img7.png)
+
+
+#### 2. Obtener todos los nombres de estudiantes ordenados Alfabeticamente 
+
+
+### Tiempo estimado vs real
+Mi tiempo estimado para esta actividad siento que va a hacer entre 2 a 3 horas, sin contar el tiempo dedicado para
+adjuntar todas las pruebas necesarias en la bitacora
+
+### Reflexion sobre gestion del tiempo
+

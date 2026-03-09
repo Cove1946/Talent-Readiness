@@ -1,8 +1,5 @@
 package dosw.bitacora.Corte2;
 
-import java.time.LocalDate;
-import java.util.List;
-
 public class Ejercicio1 {
 
     public static void main(String[] args) {
