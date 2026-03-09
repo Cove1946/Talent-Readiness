@@ -41,7 +41,17 @@ siguiente
 ![img.png](Imagens/img7.png)
 
 
-#### 2. Obtener todos los nombres de estudiantes ordenados Alfabeticamente 
+#### 2. Obtener todos los nombres de estudiantes ordenados Alfabeticamente
+- Generamos el codigo, usamos la funcion map para extraer el nombre del estudiante para luego usar sorted el cual por
+defecto ordena alfabeticamente o de mayor a menor, para por ultimo usar el ForEach para imprimir los nombres
+![img.png](img8.png)
+- Al ejecutar el codigo tenemos como resultado lo siguiente 
+![img.png](img9.png)
+- Generamos el commit y lo subimos al repositorio
+
+
+
+
 
 
 ### Tiempo estimado vs real
