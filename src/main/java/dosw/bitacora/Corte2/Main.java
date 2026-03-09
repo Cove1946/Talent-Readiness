@@ -24,5 +24,8 @@ public class Main {
         promedioMaterias.forEach((subject, score) ->
                 System.out.println(subject + " -> " + score));
 
+        Student bestStudent = service.getBestStudent();
+        System.out.println("\nEl mejor estudiante es: " + bestStudent.name);
+
     }
 }

@@ -1,5 +1,6 @@
 package dosw.bitacora.Corte2;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -40,5 +41,15 @@ public class StudentExercise {
                 ));
     }
 
+    public Student getBestStudent() {
+        return StudentsInfo.getStudents().stream()
+                .max(Comparator.comparingDouble(student ->
+                        student.grades.stream()
+                                .mapToDouble(Grade::getScore)
+                                .average()
+                                .orElse(0.0)
+                ))
+                .orElse(null);
+    }
 
 }

@@ -85,7 +85,17 @@ transformarlo en un Stream<Grade>, uniendo todos estos streams en uno solo
 ![img_1.png](img18.png)
 
 ### 5. Retornar el estudiante cuyo promedio general sea el mas alto del curso
-
+Para realizar este ejercicio se tuvo en cuenta lo siguiente 
+- Obtenemos los estudiantes convirtiendolos en un stream
+- Buscamos el estudiante con el mayor promedio para esto usamos Max 
+- Comparamos los estudiantes usando Comparator.comparingDouble()
+- Dentro del comparador tomamos las notas de cada estudiante 
+- Convertimos cada Grade en su score 
+- Sacamos el promedio de sus notas
+- Tenemos en cuenta el .orElse en caso de que el estudiante no tenga notas y si no hay estudiantes el null
+![img.png](img19.png)
+- Obtenemos como resultado de esta ejecucion lo siguiente 
+- ![img.png](img20.png)
 
 ### Tiempo estimado vs real
 Mi tiempo estimado para esta actividad siento que va a hacer entre 2 a 3 horas, sin contar el tiempo dedicado para
