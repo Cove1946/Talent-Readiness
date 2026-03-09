@@ -19,7 +19,14 @@ public class StudentExercise {
                 .toList();
     }
 
-    // 3.
+    // 3. Calcular el promedio general de todos los score existentes en el sistema
+    public double getAverageScore (){
+        return StudentsInfo.getStudents().stream()
+                .flatMap(s -> s.grades.stream())
+                .mapToDouble(g -> g.getScore())
+                .average()
+                .orElse(0.0);
+    }
 
 
 }

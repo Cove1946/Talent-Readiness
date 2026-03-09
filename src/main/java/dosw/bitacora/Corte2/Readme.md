@@ -60,6 +60,17 @@ el llamado de dicha clase, ademas de una breve descripcion para saber que de que
 ![img.png](Imagens/img13.png)
 
 #### 3. Calcular el promedio general de todos los score existentes en el sistema
+- Para poder solucionar vamos a tener el problema del usar el map
+- Ya que si aplicamos un .map(s -> s.grades) vamos a 
+tener como resultado un Stream<List<Grade>>
+- Es decir listas dentro del stream, lo cual no sirve para calcular el promedio
+[ [grade, grade, grade], [grade, grade], [grade, grade, grade] ]
+- Para resolver este problema usamos flatMap, lo cual nos permite coger cada estudiante y obtener su List<Grade> para
+transformarlo en un Stream<Grade>, uniendo todos estos streams en uno solo
+![img.png](img14.png)
+- Obtenemos como resultado lo siguiente
+![img_1.png](img15.png)
+- Generamos el commit y lo subimos al repositorio
 
 
 

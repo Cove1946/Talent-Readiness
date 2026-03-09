@@ -13,5 +13,9 @@ public class Main {
         System.out.println("\nNombres ordenados alfabeticamente:");
         service.getStudentNamesSorted()
                 .forEach(System.out::println);
+
+        double promedio = service.getAverageScore();
+        System.out.println("\nPromedio general de los score del sistema: " + promedio);
+
     }
 }
