@@ -1,6 +1,8 @@
 package dosw.bitacora.Corte2;
 
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class StudentExercise {
 
@@ -26,6 +28,16 @@ public class StudentExercise {
                 .mapToDouble(g -> g.getScore())
                 .average()
                 .orElse(0.0);
+    }
+
+    // 4. Retornar por estudiante el primedio por materia -> Retornar un Map<String, Double> donde la clave es la materia y el valor el promedio
+    public Map<String, Double> getAverageScoreBySubject() {
+        return StudentsInfo.getStudents().stream()
+                .flatMap(s -> s.grades.stream())
+                .collect(Collectors.groupingBy(
+                        Grade::getSubject,
+                        Collectors.averagingDouble(Grade::getScore)
+                ));
     }
 
 

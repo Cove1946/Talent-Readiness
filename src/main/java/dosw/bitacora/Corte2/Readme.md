@@ -72,7 +72,19 @@ transformarlo en un Stream<Grade>, uniendo todos estos streams en uno solo
 ![img_1.png](img15.png)
 - Generamos el commit y lo subimos al repositorio
 
+### 4. Retornar por estudiante el primedio por materia -> Retornar un Map<String, Double> donde la clave es la materia y el valor el promedio
+- Para resolver este ejercicio retomamos un poco la logica del anterior ejercicio
+- Obtenemos el Stream< Student>
+- Luego con el flatMap obtenemos el Stream< Grade> 
+- Hacemos uso del collect para transformar el stream en una estructura final
+- Usamos el groupingBy para agrupar las notas por materia 
+- Por ultimo con averagingDouble en vez de guardar una lista calculamos el promedio
+![img.png](img16.png)
+- Nos da como resultado lo siguiente 
+![img.png](img17.png)
+![img_1.png](img18.png)
 
+### 5. Retornar el estudiante cuyo promedio general sea el mas alto del curso
 
 
 ### Tiempo estimado vs real

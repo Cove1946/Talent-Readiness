@@ -1,5 +1,7 @@
 package dosw.bitacora.Corte2;
 
+import java.util.Map;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -16,6 +18,11 @@ public class Main {
 
         double promedio = service.getAverageScore();
         System.out.println("\nPromedio general de los score del sistema: " + promedio);
+
+        Map<String, Double> promedioMaterias = service.getAverageScoreBySubject();
+        System.out.println("\nPromedio por materia de cada estudiante: ");
+        promedioMaterias.forEach((subject, score) ->
+                System.out.println(subject + " -> " + score));
 
     }
 }
