@@ -67,9 +67,9 @@ tener como resultado un Stream<List<Grade>>
 [ [grade, grade, grade], [grade, grade], [grade, grade, grade] ]
 - Para resolver este problema usamos flatMap, lo cual nos permite coger cada estudiante y obtener su List<Grade> para
 transformarlo en un Stream<Grade>, uniendo todos estos streams en uno solo
-![img.png](img14.png)
+![img.png](Imagens/img14.png)
 - Obtenemos como resultado lo siguiente
-![img_1.png](img15.png)
+![img_1.png](Imagens/img15.png)
 - Generamos el commit y lo subimos al repositorio
 
 ### 4. Retornar por estudiante el primedio por materia -> Retornar un Map<String, Double> donde la clave es la materia y el valor el promedio
@@ -79,10 +79,10 @@ transformarlo en un Stream<Grade>, uniendo todos estos streams en uno solo
 - Hacemos uso del collect para transformar el stream en una estructura final
 - Usamos el groupingBy para agrupar las notas por materia 
 - Por ultimo con averagingDouble en vez de guardar una lista calculamos el promedio
-![img.png](img16.png)
+![img.png](Imagens/img16.png)
 - Nos da como resultado lo siguiente 
-![img.png](img17.png)
-![img_1.png](img18.png)
+![img.png](Imagens/img17.png)
+![img_1.png](Imagens/img18.png)
 
 ### 5. Retornar el estudiante cuyo promedio general sea el mas alto del curso
 Para realizar este ejercicio se tuvo en cuenta lo siguiente 
@@ -93,9 +93,23 @@ Para realizar este ejercicio se tuvo en cuenta lo siguiente
 - Convertimos cada Grade en su score 
 - Sacamos el promedio de sus notas
 - Tenemos en cuenta el .orElse en caso de que el estudiante no tenga notas y si no hay estudiantes el null
-![img.png](img19.png)
+![img.png](Imagens/img19.png)
 - Obtenemos como resultado de esta ejecucion lo siguiente 
-- ![img.png](img20.png)
+- ![img.png](Imagens/img20.png)
+
+### 6. Retornar las materias reprobadas por equipo -> Retornar Map <String, Long> donde la clave es el nombre del equipo y el valor la cantidad total de materias reprobadas
+Para realizar este ejercicio se tuvo en cuenta lo siguiente 
+- Obtener los estudiantes convirtiendolos en un stream
+- Ir a la coleccion de notas 
+- Filtrar por solo los reprobados
+- Convertir cada grade en su Team
+- Agruparlos por Team
+- Contar cada uno 
+Tenemos como resultado lo siguiente
+![img.png](Imagens/img21.png)
+
+Con la siguiente salida
+![img.png](Imagens/img22.png)
 
 ### Tiempo estimado vs real
 Mi tiempo estimado para esta actividad siento que va a hacer entre 2 a 3 horas, sin contar el tiempo dedicado para

@@ -41,6 +41,7 @@ public class StudentExercise {
                 ));
     }
 
+    // 5. Retornar el estudiante cuyo promedio general sea el mas alto del curso
     public Student getBestStudent() {
         return StudentsInfo.getStudents().stream()
                 .max(Comparator.comparingDouble(student ->
@@ -51,5 +52,22 @@ public class StudentExercise {
                 ))
                 .orElse(null);
     }
+
+    //6. Retornar las materias reprobadas por equipo -> Retornar Map <String, Long> donde la clave es el nombre del equipo y el valor la cantidad total de materias reprobadas
+    public Map<String, Long> getFailedSubjectsByTeam() {
+
+        return StudentsInfo.getStudents().stream()
+                .flatMap(student ->
+                        student.getGrades().stream()
+                                .filter(grade -> !grade.isPassed())
+                                .map(grade -> student.getTeam())
+                )
+                .collect(Collectors.groupingBy(
+                        team -> team,
+                        Collectors.counting()
+                ));
+    }
+
+
 
 }
