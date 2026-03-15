@@ -31,7 +31,8 @@ public class StudentExercise {
                 .orElse(0.0);
     }
 
-    // 4. Retornar por estudiante el primedio por materia -> Retornar un Map<String, Double> donde la clave es la materia y el valor el promedio
+    // 4. Retornar por estudiante el primedio por materia -> Retornar un Map<String, Double> donde la clave es la
+    // materia y el valor el promedio
     public Map<String, Double> getAverageScoreBySubject() {
         return StudentsInfo.getStudents().stream()
                 .flatMap(s -> s.grades.stream())
@@ -53,7 +54,8 @@ public class StudentExercise {
                 .orElse(null);
     }
 
-    //6. Retornar las materias reprobadas por equipo -> Retornar Map <String, Long> donde la clave es el nombre del equipo y el valor la cantidad total de materias reprobadas
+    //6. Retornar las materias reprobadas por equipo -> Retornar Map <String, Long> donde la clave es el nombre del
+    // equipo y el valor la cantidad total de materias reprobadas
     public Map<String, Long> getFailedSubjectsByTeam() {
 
         return StudentsInfo.getStudents().stream()
@@ -79,6 +81,30 @@ public class StudentExercise {
                 .limit(3)
                 .toList();
     }
+
+    // 8. Agrupar estudiantes por estado academico: Clasificarlos por ALTO RENDIMIENTO -> Promedio >=4,5 ,
+    // REGULAR -> Promedio entre 3,5 y 4.49, RIESGO -> promedio < 3,5
+    public Map<String, List<Student>> groupStudentStatus() {
+        return StudentsInfo.getStudents()
+                .stream()
+                .collect(Collectors.groupingBy(student -> {
+
+                    double avg = student.grades.stream()
+                            .mapToDouble(g -> g.score)
+                            .average()
+                            .orElse(0);
+
+                    if (avg >= 4.5) {
+                        return "\nALTO RENDIMIENTO";
+                    } else if (avg >= 3.5) {
+                        return "\nREGULAR";
+                    } else {
+                        return "\nRIESGO";
+                    }
+
+                }));
+    }
+
 
 
 

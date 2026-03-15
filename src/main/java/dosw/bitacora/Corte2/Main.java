@@ -45,6 +45,15 @@ public class Main {
         System.out.println("\nTop 3 de los estudiantes mas agrogro");
         topStudent.forEach(student -> System.out.println(student.name));
 
+        //Punto 8
+        Map<String, List<Student>> studentStatus = service.groupStudentStatus();
+        System.out.println("\nEstudiantes agrupados por estado academico:");
+        studentStatus.forEach((status, students) -> {
+            System.out.println(status + ":");
+            students.forEach(s ->
+                    System.out.println(" - " + s.name)
+            );
+        });
 
     }
 }

@@ -132,6 +132,24 @@ Como resultado tenemos la siguiente salida
 
 ![img.png](Imagens/img24.png)
 
+### 8. Agrupar estudiantes por estado academico: Clasificarlos por ALTO RENDIMIENTO -> Promedio >=4,5 , REGULAR ->Promedio entre 3,5 y 4.49, RIESGO -> promedio < 3,5
+Para este ejercicio se tomo en cuenta lo siguiente
+- Obtiene la lista de estudiantes desde StudentsInfo.getStudents().
+
+- Convierte la lista en un Stream para poder procesar los datos.
+
+- Calcula el promedio de notas de cada estudiante utilizando las calificaciones (grades).
+
+- Clasifica cada estudiante según su promedio en ALTO RENDIMIENTO, REGULAR o RIESGO.
+
+- Agrupa los estudiantes por su estado académico utilizando Collectors.groupingBy, generando un Map donde la clave es el estado y el valor es la lista de estudiantes en ese grupo.
+
+![img.png](img26.png)
+
+Tenemos como resultado lo siguiente
+
+![img.png](img27.png)
+
 ### Tiempo estimado vs real
 Mi tiempo estimado para esta actividad siento que va a hacer entre 2 a 3 horas, sin contar el tiempo dedicado para
 adjuntar todas las pruebas necesarias en la bitacora
