@@ -144,11 +144,11 @@ Para este ejercicio se tomo en cuenta lo siguiente
 
 - Agrupa los estudiantes por su estado académico utilizando Collectors.groupingBy, generando un Map donde la clave es el estado y el valor es la lista de estudiantes en ese grupo.
 
-![img.png](img26.png)
+![img.png](Imagens/img26.png)
 
 Tenemos como resultado lo siguiente
 
-![img.png](img27.png)
+![img.png](Imagens/img27.png)
 
 
 ### 9. Obtener la materia con mas reprobaciones
@@ -164,11 +164,11 @@ Tenemos como resultado lo siguiente
 
 - Si no existen reprobaciones, devuelve el mensaje "No hay reprobaciones"
 
-![img.png](img28.png)
+![img.png](Imagens/img28.png)
 
 Nos da como salida lo siguiente 
 
-![img.png](img29.png)
+![img.png](Imagens/img29.png)
 
 
 ### 10.Tome solo estudiantes del equipo DORADO, Obtenga todas sus notas, Filtre solo notas aprobadas, Agrupe por materia, Calcule promedio por materia, Ordene descendente por promedio, Retorne un LinkedHashMap preservando orden.
@@ -187,13 +187,75 @@ Para este ejercicio se tuvo en cuenta lo siguiente
 
 - Convierte el resultado en un LinkedHashMap para preservar el orden obtenido después de la ordenación
 
-![img.png](img30.png)
+![img.png](Imagens/img30.png)
 
 Nos da como salida lo siguiente
 
-![img.png](img31.png)
+![img.png](Imagens/img31.png)
 
 
+### 11. Equipo con mejor promedio general
+Para este ejercicio se tuvo en cuenta lo siguiente
+- Se obtiene la lista de estudiantes desde StudentsInfo.getStudents() y se convierte en un Stream para poder aplicar operaciones funcionales
+
+- Se agrupan los estudiantes por equipo utilizando Collectors.groupingBy(student -> student.team)
+
+- Esto permite organizar a los estudiantes según el equipo al que pertenecen
+
+- Se calcula el promedio de cada equipo usando Collectors.averagingDouble
+
+- Para lograrlo, primero se calcula el promedio de notas de cada estudiante:
+
+- Se obtienen sus calificaciones (grades)
+
+- Se convierten las notas a double con mapToDouble
+
+- Se calcula el promedio con average()
+
+- Se obtiene un Map donde cada equipo tiene su promedio general
+
+- El Map se convierte en un Stream de entradas usando entrySet().stream() para poder analizar los resultados
+
+- Se busca el equipo con el mayor promedio utilizando max(Map.Entry.comparingByValue())
+
+- Se extrae únicamente el nombre del equipo con map(Map.Entry::getKey)
+
+- Finalmente, si no existen datos, se retorna "No hay equipos" usando orElse
+
+![img.png](Imagens/img32.png)
+
+Nos da como resultado lo siguiente
+
+![img.png](Imagens/img33.png)
+
+### 12. Top 3 materias con más reprobados
+- Se obtiene la lista de estudiantes desde StudentsInfo.getStudents() y se convierte en un Stream
+
+- Se obtienen todas las calificaciones de todos los estudiantes utilizando flatMap
+
+- Esto permite transformar las listas de notas de cada estudiante en un solo flujo continuo de calificaciones
+
+- Se filtran únicamente las calificaciones reprobadas usando .filter(g -> !g.passed)
+
+- De esta manera solo se analizan las materias que fueron perdidas.
+
+- Las calificaciones se agrupan por materia mediante Collectors.groupingBy(g -> g.subject)
+
+- Se cuenta cuántas reprobaciones tiene cada materia utilizando Collectors.counting()
+
+- El Map se convierte en un Stream de entradas para poder ordenar los resultados
+
+- Las materias se ordenan de mayor a menor según el número de reprobaciones usando sorted
+
+- Se seleccionan solo las tres primeras materias con .limit(3), que representan las materias con más reprobaciones
+
+- El resultado final se almacena en un LinkedHashMap usando Collectors.toMap, lo que permite mantener el orden después de ordenarla
+
+![img.png](Imagens/img34.png)
+
+Nos da como salida lo siguiente
+
+![img.png](Imagens/img35.png)
 
 ### Tiempo estimado vs real
 Mi tiempo estimado para esta actividad siento que va a hacer entre 2 a 3 horas, sin contar el tiempo dedicado para

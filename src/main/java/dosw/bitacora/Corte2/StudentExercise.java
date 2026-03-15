@@ -143,6 +143,48 @@ public class StudentExercise {
                 ));
     }
 
+    //11. El equipo con el mejor promedio general
+    public String getBestTeam() {
+        return StudentsInfo.getStudents()
+                .stream()
+                .collect(Collectors.groupingBy(
+                        student -> student.team,
+                        Collectors.averagingDouble(student ->
+                                student.grades.stream()
+                                        .mapToDouble(g -> g.score)
+                                        .average()
+                                        .orElse(0)
+                        )
+                ))
+                .entrySet()
+                .stream()
+                .max(Map.Entry.comparingByValue())
+                .map(Map.Entry::getKey)
+                .orElse("No hay equipos");
+    }
+
+    //12. Top 3 materias con mas reprobados
+    public LinkedHashMap<String, Long> getTop3WorstStudents() {
+        return StudentsInfo.getStudents()
+                .stream()
+                .flatMap(student -> student.grades.stream())
+                .filter(g -> !g.passed)
+                .collect(Collectors.groupingBy(
+                        g -> g.subject,
+                        Collectors.counting()
+                ))
+                .entrySet()
+                .stream()
+                .sorted((e1, e2) -> Long.compare(e2.getValue(), e1.getValue()))
+                .limit(3)
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        Map.Entry::getValue,
+                        (a, b) -> a,
+                        LinkedHashMap::new
+                ));
+    }
+
 
 
 }

@@ -1,5 +1,6 @@
 package dosw.bitacora.Corte2;
 
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -59,12 +60,22 @@ public class Main {
         String losses = service.getFailedSubjects();
         System.out.println("\nLa materia mas reprobadas es: " + losses);
 
-
+        //Punto 10
         Map<String, Double> promedioMateriasDorado = service.getGoldenTeam();
         System.out.println("\nPromedio de materias aprobadas del equipo DORADO: ");
         promedioMateriasDorado.forEach((subject, avg) ->
                 System.out.println(subject + " -> " + avg)
         );
+
+        //Punto 11
+        String bestTeam = service.getBestTeam();
+        System.out.println("\nEl equipo con mejor promedio general es: " + bestTeam);
+
+        //Punto 12
+        LinkedHashMap<String, Long> topFailures = service.getTop3WorstStudents();
+        System.out.println("\nTop 3 materias con más reprobaciones:");
+        topFailures.forEach((subject, count) ->
+                System.out.println(subject + " -> " + count));
 
     }
 }
