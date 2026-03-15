@@ -171,6 +171,28 @@ Nos da como salida lo siguiente
 ![img.png](img29.png)
 
 
+### 10.Tome solo estudiantes del equipo DORADO, Obtenga todas sus notas, Filtre solo notas aprobadas, Agrupe por materia, Calcule promedio por materia, Ordene descendente por promedio, Retorne un LinkedHashMap preservando orden.
+Para este ejercicio se tuvo en cuenta lo siguiente
+- Obtiene la lista de estudiantes desde StudentsInfo.getStudents()
+
+- Filtra únicamente los estudiantes del equipo DORADO
+
+- Obtiene todas sus calificaciones utilizando flatMap para trabajar con todas las notas en un solo flujo
+
+- Filtra solo las notas aprobadas 
+
+- Agrupa las calificaciones por materia y calcula el promedio de cada una usando Collectors.groupingBy y averagingDouble
+
+- Ordena las materias de forma descendente según su promedio
+
+- Convierte el resultado en un LinkedHashMap para preservar el orden obtenido después de la ordenación
+
+![img.png](img30.png)
+
+Nos da como salida lo siguiente
+
+![img.png](img31.png)
+
 
 
 ### Tiempo estimado vs real

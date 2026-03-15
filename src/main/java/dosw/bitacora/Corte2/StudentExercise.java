@@ -1,6 +1,7 @@
 package dosw.bitacora.Corte2;
 
 import java.util.Comparator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -119,6 +120,28 @@ public class StudentExercise {
                 .orElse("No hay reprobaciones");
     }
 
+    // 10. Tome solo estudiantes del equipo DORADO, Obtenga todas sus notas, Filtre solo notas aprobadas, Agrupe por
+    // materia, Calcule promedio por materia, Ordene descendente por promedio, Retorne un LinkedHashMap preservando orden.
+    public Map<String, Double> getGoldenTeam() {
+        return StudentsInfo.getStudents()
+                .stream()
+                .filter(s -> s.team.equals("DORADO"))
+                .flatMap(s -> s.grades.stream())
+                .filter(g -> g.passed)
+                .collect(Collectors.groupingBy(
+                        g -> g.subject,
+                        Collectors.averagingDouble(g -> g.score)
+                ))
+                .entrySet()
+                .stream()
+                .sorted(Map.Entry.<String, Double>comparingByValue().reversed())
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        Map.Entry::getValue,
+                        (a, b) -> a,
+                        LinkedHashMap::new
+                ));
+    }
 
 
 

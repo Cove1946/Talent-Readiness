@@ -59,5 +59,12 @@ public class Main {
         String losses = service.getFailedSubjects();
         System.out.println("\nLa materia mas reprobadas es: " + losses);
 
+
+        Map<String, Double> promedioMateriasDorado = service.getGoldenTeam();
+        System.out.println("\nPromedio de materias aprobadas del equipo DORADO: ");
+        promedioMateriasDorado.forEach((subject, avg) ->
+                System.out.println(subject + " -> " + avg)
+        );
+
     }
 }
