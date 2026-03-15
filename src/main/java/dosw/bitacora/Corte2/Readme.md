@@ -106,10 +106,31 @@ Para realizar este ejercicio se tuvo en cuenta lo siguiente
 - Agruparlos por Team
 - Contar cada uno 
 Tenemos como resultado lo siguiente
+
 ![img.png](Imagens/img21.png)
 
 Con la siguiente salida
+
 ![img.png](Imagens/img22.png)
+
+
+### 7. Top 3 estudiantes con mas materias aprobadas -> Retornar lista ordenada de manera descendente
+Para realizar este ejercicio te tuvo en cuenta lo siguiente
+- Obtiene la lista de estudiantes usando StudentsInfo.getStudents().
+
+- Convierte la lista en un stream para poder aplicar operaciones sobre los datos.
+
+- Ordena los estudiantes según la cantidad de materias aprobadas (passed = true) que tiene cada uno, de mayor a menor.
+
+- Selecciona los primeros 3 estudiantes con más materias aprobadas usando limit(3).
+
+- Convierte el resultado nuevamente en una lista y la retorna.
+
+![img.png](Imagens/img23.png)
+
+Como resultado tenemos la siguiente salida 
+
+![img.png](Imagens/img24.png)
 
 ### Tiempo estimado vs real
 Mi tiempo estimado para esta actividad siento que va a hacer entre 2 a 3 horas, sin contar el tiempo dedicado para

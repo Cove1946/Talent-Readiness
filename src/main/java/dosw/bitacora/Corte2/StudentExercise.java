@@ -68,6 +68,18 @@ public class StudentExercise {
                 ));
     }
 
+    // 7. Top 3 estudiantes con mas materias aprobadas -> Retornar lista ordenada de manera descendente
+    public  List<Student> getTop3(){
+        return StudentsInfo.getStudents()
+                .stream()
+                .sorted((s1, s2) -> Long.compare(
+                        s2.grades.stream().filter( g -> g.passed).count(),
+                        s1.grades.stream().filter(g -> g.passed).count()
+                ))
+                .limit(3)
+                .toList();
+    }
+
 
 
 }

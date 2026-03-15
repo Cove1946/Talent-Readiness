@@ -1,5 +1,6 @@
 package dosw.bitacora.Corte2;
 
+import java.util.List;
 import java.util.Map;
 
 public class Main {
@@ -38,6 +39,11 @@ public class Main {
         materiasPerdidas.forEach((team, count) ->
                 System.out.println(team + " -> " + count));
 
+
+        //Punto 7
+        List<Student> topStudent = service.getTop3();
+        System.out.println("\nTop 3 de los estudiantes mas agrogro");
+        topStudent.forEach(student -> System.out.println(student.name));
 
 
     }
