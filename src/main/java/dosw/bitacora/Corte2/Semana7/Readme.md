@@ -2,8 +2,8 @@
 
 ### Actividades a realizar
 Se tiene el siguiente modelo 
-![img.png](Imagens/img.png)
-![img.png](Imagens/img1.png)
+![img.png](../Imagens/img.png)
+![img.png](../Imagens/img1.png)
 
 Realizar el siguiente trabajo:
 
@@ -26,38 +26,38 @@ Realizar el siguiente trabajo:
 #### 1. Obtener todos los estudiantes del equipo DORADO -> Retornar una lista de estudiantes cuyo team sea DORADO
 - Primero se realizaron las clases propuestas por el ejercicio es decir la clase Student y Grade con sus respectivos
 constructores, geters y sters.
-![img.png](Imagens/img2.png)
-![img_1.png](Imagens/img_3.png)
+![img.png](../Imagens/img2.png)
+![img_1.png](../Imagens/img_3.png)
 - Acontinuacion se genero una clase la cual va a contener una lista de diferentes estudiantes con su respectiva lista 
 de notas, de esta forma podemos reutilizar dicha lista para realizar los diferentes ejercicios propuestos
-![img.png](Imagens/img4.png)
+![img.png](../Imagens/img4.png)
 - Despues se genero el codigo que resuelve dicho ejercicio
-![img.png](Imagens/img5.png)
+![img.png](../Imagens/img5.png)
 - Como se puede apreciar en la imagen no es necesario crear una lista de estudiantes ya que esta ya se encuentra en la
 clase de StudentsInfo, por lo cual solo debemos hacer uso del get y convertirlo a stream, como resultado tenemos lo
 siguiente
-![img.png](Imagens/img6.png)
+![img.png](../Imagens/img6.png)
 - Realizamos el respectivo Commit y lo subimos al repositorio
-![img.png](Imagens/img7.png)
+![img.png](../Imagens/img7.png)
 
 
 #### 2. Obtener todos los nombres de estudiantes ordenados Alfabeticamente
 - Generamos el codigo, usamos la funcion map para extraer el nombre del estudiante para luego usar sorted el cual por
 defecto ordena alfabeticamente o de mayor a menor, para por ultimo usar el ForEach para imprimir los nombres
-![img.png](Imagens/img8.png)
+![img.png](../Imagens/img8.png)
 - Al ejecutar el codigo tenemos como resultado lo siguiente 
-![img.png](Imagens/img9.png)
+![img.png](../Imagens/img9.png)
 - Generamos el commit y lo subimos al repositorio
-![img.png](Imagens/img10.png)
+![img.png](../Imagens/img10.png)
 
 
 #### Actualizacion
 - Con el fin de que el codigo se vea de una forma mas limpia se decidio hacer los diferentes puntos como funciones de
 una clase llamada StudentExercise, de esta forma se hace la logica de cada punto en esta clase y en el main solo se hace 
 el llamado de dicha clase, ademas de una breve descripcion para saber que de que ejercicio se trata
-![img.png](Imagens/img11.png)
-![img_1.png](Imagens/img_12.png)
-![img.png](Imagens/img13.png)
+![img.png](../Imagens/img11.png)
+![img_1.png](../Imagens/img_12.png)
+![img.png](../Imagens/img13.png)
 
 #### 3. Calcular el promedio general de todos los score existentes en el sistema
 - Para poder solucionar vamos a tener el problema del usar el map
@@ -67,9 +67,9 @@ tener como resultado un Stream<List<Grade>>
 [ [grade, grade, grade], [grade, grade], [grade, grade, grade] ]
 - Para resolver este problema usamos flatMap, lo cual nos permite coger cada estudiante y obtener su List<Grade> para
 transformarlo en un Stream<Grade>, uniendo todos estos streams en uno solo
-![img.png](Imagens/img14.png)
+![img.png](../Imagens/img14.png)
 - Obtenemos como resultado lo siguiente
-![img_1.png](Imagens/img15.png)
+![img_1.png](../Imagens/img15.png)
 - Generamos el commit y lo subimos al repositorio
 
 ### 4. Retornar por estudiante el primedio por materia -> Retornar un Map<String, Double> donde la clave es la materia y el valor el promedio
@@ -79,10 +79,10 @@ transformarlo en un Stream<Grade>, uniendo todos estos streams en uno solo
 - Hacemos uso del collect para transformar el stream en una estructura final
 - Usamos el groupingBy para agrupar las notas por materia 
 - Por ultimo con averagingDouble en vez de guardar una lista calculamos el promedio
-![img.png](Imagens/img16.png)
+![img.png](../Imagens/img16.png)
 - Nos da como resultado lo siguiente 
-![img.png](Imagens/img17.png)
-![img_1.png](Imagens/img18.png)
+![img.png](../Imagens/img17.png)
+![img_1.png](../Imagens/img18.png)
 
 ### 5. Retornar el estudiante cuyo promedio general sea el mas alto del curso
 Para realizar este ejercicio se tuvo en cuenta lo siguiente 
@@ -93,9 +93,9 @@ Para realizar este ejercicio se tuvo en cuenta lo siguiente
 - Convertimos cada Grade en su score 
 - Sacamos el promedio de sus notas
 - Tenemos en cuenta el .orElse en caso de que el estudiante no tenga notas y si no hay estudiantes el null
-![img.png](Imagens/img19.png)
+![img.png](../Imagens/img19.png)
 - Obtenemos como resultado de esta ejecucion lo siguiente 
-- ![img.png](Imagens/img20.png)
+- ![img.png](../Imagens/img20.png)
 
 ### 6. Retornar las materias reprobadas por equipo -> Retornar Map <String, Long> donde la clave es el nombre del equipo y el valor la cantidad total de materias reprobadas
 Para realizar este ejercicio se tuvo en cuenta lo siguiente 
@@ -107,11 +107,11 @@ Para realizar este ejercicio se tuvo en cuenta lo siguiente
 - Contar cada uno 
 Tenemos como resultado lo siguiente
 
-![img.png](Imagens/img21.png)
+![img.png](../Imagens/img21.png)
 
 Con la siguiente salida
 
-![img.png](Imagens/img22.png)
+![img.png](../Imagens/img22.png)
 
 
 ### 7. Top 3 estudiantes con mas materias aprobadas -> Retornar lista ordenada de manera descendente
@@ -126,11 +126,11 @@ Para realizar este ejercicio te tuvo en cuenta lo siguiente
 
 - Convierte el resultado nuevamente en una lista y la retorna.
 
-![img.png](Imagens/img23.png)
+![img.png](../Imagens/img23.png)
 
 Como resultado tenemos la siguiente salida 
 
-![img.png](Imagens/img24.png)
+![img.png](../Imagens/img24.png)
 
 ### 8. Agrupar estudiantes por estado academico: Clasificarlos por ALTO RENDIMIENTO -> Promedio >=4,5 , REGULAR ->Promedio entre 3,5 y 4.49, RIESGO -> promedio < 3,5
 Para este ejercicio se tomo en cuenta lo siguiente
@@ -144,11 +144,11 @@ Para este ejercicio se tomo en cuenta lo siguiente
 
 - Agrupa los estudiantes por su estado académico utilizando Collectors.groupingBy, generando un Map donde la clave es el estado y el valor es la lista de estudiantes en ese grupo.
 
-![img.png](Imagens/img26.png)
+![img.png](../Imagens/img26.png)
 
 Tenemos como resultado lo siguiente
 
-![img.png](Imagens/img27.png)
+![img.png](../Imagens/img27.png)
 
 
 ### 9. Obtener la materia con mas reprobaciones
@@ -164,11 +164,11 @@ Tenemos como resultado lo siguiente
 
 - Si no existen reprobaciones, devuelve el mensaje "No hay reprobaciones"
 
-![img.png](Imagens/img28.png)
+![img.png](../Imagens/img28.png)
 
 Nos da como salida lo siguiente 
 
-![img.png](Imagens/img29.png)
+![img.png](../Imagens/img29.png)
 
 
 ### 10.Tome solo estudiantes del equipo DORADO, Obtenga todas sus notas, Filtre solo notas aprobadas, Agrupe por materia, Calcule promedio por materia, Ordene descendente por promedio, Retorne un LinkedHashMap preservando orden.
@@ -187,11 +187,11 @@ Para este ejercicio se tuvo en cuenta lo siguiente
 
 - Convierte el resultado en un LinkedHashMap para preservar el orden obtenido después de la ordenación
 
-![img.png](Imagens/img30.png)
+![img.png](../Imagens/img30.png)
 
 Nos da como salida lo siguiente
 
-![img.png](Imagens/img31.png)
+![img.png](../Imagens/img31.png)
 
 
 ### 11. Equipo con mejor promedio general
@@ -222,11 +222,11 @@ Para este ejercicio se tuvo en cuenta lo siguiente
 
 - Finalmente, si no existen datos, se retorna "No hay equipos" usando orElse
 
-![img.png](Imagens/img32.png)
+![img.png](../Imagens/img32.png)
 
 Nos da como resultado lo siguiente
 
-![img.png](Imagens/img33.png)
+![img.png](../Imagens/img33.png)
 
 ### 12. Top 3 materias con más reprobados
 - Se obtiene la lista de estudiantes desde StudentsInfo.getStudents() y se convierte en un Stream
@@ -251,15 +251,23 @@ Nos da como resultado lo siguiente
 
 - El resultado final se almacena en un LinkedHashMap usando Collectors.toMap, lo que permite mantener el orden después de ordenarla
 
-![img.png](Imagens/img34.png)
+![img.png](../Imagens/img34.png)
 
 Nos da como salida lo siguiente
 
-![img.png](Imagens/img35.png)
+![img.png](../Imagens/img35.png)
 
 ### Tiempo estimado vs real
 Mi tiempo estimado para esta actividad siento que va a hacer entre 2 a 3 horas, sin contar el tiempo dedicado para
 adjuntar todas las pruebas necesarias en la bitacora
 
+El trabajo real para esta parte de la bitacora fue mucho mas de lo que esperaba, esto debido a que pense que los ejercicios
+con stream iban a ser como los primeros que realizamos en la semana 1 o 2, pero mi sorpresa fue al realizarlos ya que tuve
+que buscar operaciones que no conocia para cumplir con los parametros del enunciado, sin embargo resulto bastante entretenido
+aun que se me dificulto entender que hacia cada funcion, el tiempo final fue de aproximadamente 5 horas
+
+
 ### Reflexion sobre gestion del tiempo
+Tuve bastantes problemas ya que estaba mas pendiente del proyecto que de la bitacora, por lo cual debo mejorar mi manejo
+del tiempo y distribuirlo bien para responder de buena forma al profesor 
 

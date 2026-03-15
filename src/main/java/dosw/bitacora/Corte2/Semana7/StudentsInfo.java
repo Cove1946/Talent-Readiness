@@ -1,4 +1,4 @@
-package dosw.bitacora.Corte2;
+package dosw.bitacora.Corte2.Semana7;
 
 import java.time.LocalDate;
 import java.util.List;
