@@ -150,6 +150,29 @@ Tenemos como resultado lo siguiente
 
 ![img.png](img27.png)
 
+
+### 9. Obtener la materia con mas reprobaciones
+- Obtiene la lista de estudiantes desde StudentsInfo.getStudents()
+
+- Convierte las listas de calificaciones de cada estudiante en un solo flujo usando flatMap, para trabajar con todas las materias del sistema
+
+- Filtra únicamente las materias reprobadas (passed = false)
+
+- Agrupa las materias por su nombre y cuenta cuántas reprobaciones tiene cada una usando groupingBy y counting
+
+- Busca la materia con mayor número de reprobaciones utilizando max y devuelve su nombre
+
+- Si no existen reprobaciones, devuelve el mensaje "No hay reprobaciones"
+
+![img.png](img28.png)
+
+Nos da como salida lo siguiente 
+
+![img.png](img29.png)
+
+
+
+
 ### Tiempo estimado vs real
 Mi tiempo estimado para esta actividad siento que va a hacer entre 2 a 3 horas, sin contar el tiempo dedicado para
 adjuntar todas las pruebas necesarias en la bitacora

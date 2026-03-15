@@ -105,6 +105,20 @@ public class StudentExercise {
                 }));
     }
 
+    //9. Obtener la materia con mas reprobaciones
+    public String getFailedSubjects(){
+        return StudentsInfo.getStudents()
+                .stream()
+                .flatMap(student -> student.getGrades().stream())
+                .filter(g -> !g.passed)
+                .collect(Collectors.groupingBy(g -> g.subject, Collectors.counting()))
+                .entrySet()
+                .stream()
+                .max(Map.Entry.comparingByValue())
+                .map(Map.Entry::getKey)
+                .orElse("No hay reprobaciones");
+    }
+
 
 
 

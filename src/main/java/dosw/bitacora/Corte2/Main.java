@@ -55,5 +55,9 @@ public class Main {
             );
         });
 
+        //Punto 9
+        String losses = service.getFailedSubjects();
+        System.out.println("\nLa materia mas reprobadas es: " + losses);
+
     }
 }
