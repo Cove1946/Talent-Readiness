@@ -174,3 +174,87 @@ El patrón Abstract Factory resuelve esto porque:
 
 ### análisis estático del código 
 ![img.png](img46.png)
+
+
+### Ejercicio 3: Sistema de Reportes de una Plataforma
+Una plataforma necesita generar reportes de información del sistema, tales como:
+- Reportes en PDF
+- Reportes en CSV
+- Reportes en JSON
+El sistema debe permitir que los reportes se construyan paso a paso, agregando diferentes secciones como:
+- Información general
+- Estadísticas
+- Detalle de transacciones
+#### Resumen final
+Adicionalmente, el sistema debe permitir extender el comportamiento de los reportes, por ejemplo agregando decoraciones como:
+- Firma digital
+- Marca de agua
+- Compresión del archivo
+El sistema debe ser flexible para permitir nuevos formatos de reporte y nuevas extensiones sin modificar el código existente.
+
+### Patrón 1: Builder
+#### 1.1 Nombre del Patrón
+Builder (Constructor)
+#### 1.2 Tipo del Patrón
+Creacional
+#### 1.3 Justificación Técnica
+El enunciado establece que los reportes deben construirse paso a paso agregando diferentes secciones como información 
+general, estadísticas, detalle de transacciones y resumen final. Sin Builder, la construcción del reporte generaria la 
+generacion de diferentes constructores
+
+El patrón Builder resuelve esto porque:
+
+Permite construir el reporte sección por sección de forma fluida y legible, agregando solo las secciones que se necesiten
+- Separa la construcción del objeto de su representación final, permitiendo que el mismo proceso de construcción genere diferentes tipos de reporte
+- Si se necesita un reporte solo con información general y resumen, no es necesario pasar valores nulos para las secciones que no aplican
+- Cumple el principio de Single Responsibility ya que la lógica de construcción queda encapsulada en el Builder y no en el objeto mismo
+
+### Patrón 2: Decorator
+#### 2.1 Nombre del Patrón
+Decorator (Decorador)
+#### 2.2 Tipo del Patrón
+Estructural
+#### 2.3 Justificación Técnica
+El enunciado exige extender el comportamiento de los reportes agregando decoraciones como firma digital, marca de agua 
+y compresión, y que esto sea posible sin modificar el código existente.
+
+Sin Decorator, habría que crear subclases para cada combinación posible
+
+El patrón Decorator resuelve esto porque:
+
+Permite apilar decoraciones dinámicamente en tiempo de ejecución sin explotar en subclases
+- Todos los decoradores implementan la misma interfaz que el reporte base, por lo que el cliente los trata de forma idéntica
+- Agregar una nueva decoración como cifrado solo requiere crear un nuevo decorador sin tocar ninguna clase existente → cumple el principio Open/Closed
+- Las decoraciones son combinables libremente: un reporte puede tener firma + marca de agua + compresión en cualquier orden
+
+### Patrón 3: Factory Method
+#### 3.1 Nombre del Patrón
+Factory Method (Método Fábrica)
+#### 3.2 Tipo del Patrón
+Creacional
+#### 3.3 Justificación Técnica
+El enunciado requiere soportar múltiples formatos de reporte (PDF, CSV, JSON) y permitir nuevos formatos sin modificar 
+el código existente. Cada formato es una variante del mismo objeto Report con su propia lógica de generación.
+
+Sin Factory Method, el cliente tendría que instanciar directamente cada formato
+
+El patrón Factory Method resuelve esto porque:
+
+- Define un método de fábrica abstracto createReport() que cada subclase implementa para crear su propio formato
+- El cliente trabaja con la interfaz Report sin conocer la implementación concreta que hay detrás
+- Agregar un nuevo formato como XML solo requiere crear una nueva subclase de la fábrica sin modificar el código existente → cumple el principio Open/Closed
+- A diferencia de Abstract Factory, aquí solo se crea un único tipo de objeto por fábrica, que es exactamente lo que necesita este sistema
+
+#### Diagrama Factory Method
+![img.png](img47.png)
+
+#### Diagrama Builder
+![img.png](img48.png)
+
+#### Diagrama Decorator
+![img.png](img49.png)
+
+#### Diagrama General
+![img.png](img50.png)
+
+![img.png](img51.png)
