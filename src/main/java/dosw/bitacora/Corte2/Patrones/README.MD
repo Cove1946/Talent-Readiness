@@ -50,6 +50,10 @@ base, por lo que el cliente no distingue si trabaja con uno o varios canales act
 Agregar un nuevo canal como WhatsApp o Slack solo requiere crear un nuevo decorador, sin tocar ninguna clase existente 
 → cumple el principio Open/Closed
 
+### Diagrama
+
+![img.png](img.png)
+
 ### Patrón 2: Singleton
 #### 2.1 Nombre del Patrón
 Singleton
@@ -67,3 +71,12 @@ Garantiza que el NotificationService tenga una única instancia en toda la aplic
 Proporciona un punto de acceso global a ese servicio desde cualquier parte del sistema
 Evita inconsistencias que ocurrirían si múltiples instancias del servicio gestionaran el envío de forma independiente, 
 como duplicación de mensajes o condiciones de carrera
+
+### Diagrama
+
+![img_1.png](img_1.png)
+
+
+### Diagrama General
+
+![img_2.png](img_2.png)
