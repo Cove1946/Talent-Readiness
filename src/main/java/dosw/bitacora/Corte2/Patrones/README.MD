@@ -155,3 +155,16 @@ El patrón Abstract Factory resuelve esto porque:
 - Agregar un nuevo proveedor como Mercado Pago solo requiere crear una nueva fábrica concreta sin modificar nada existente → cumple el principio Open/Closed
 - Garantiza que los objetos creados de una misma familia sean compatibles entre sí
 
+### Diagramas
+
+#### Adapter
+![img.png](img41.png)
+
+#### Chainf Of Responsability
+![img.png](img42.png)
+
+#### Abstract Factory
+![img.png](img43.png)
+
+#### Diagrama General
+![img.png](img44.png)
