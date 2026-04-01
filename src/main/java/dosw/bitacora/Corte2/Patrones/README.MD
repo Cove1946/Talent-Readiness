@@ -168,3 +168,9 @@ El patrón Abstract Factory resuelve esto porque:
 
 #### Diagrama General
 ![img.png](img44.png)
+
+### Generar cobertura de código con Jacoco
+![img.png](img45.png)
+
+### análisis estático del código 
+![img.png](img46.png)
