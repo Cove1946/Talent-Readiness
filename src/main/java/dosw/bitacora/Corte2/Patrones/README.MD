@@ -86,3 +86,72 @@ como duplicación de mensajes o condiciones de carrera
 
 ### análisis estático del código 
 ![img.png](img40.png)
+
+### Ejercicio 2: Sistema de Procesamiento de Pagos
+Una plataforma de comercio electrónico necesita procesar pagos usando distintos proveedores:
+- PayPal
+- Stripe
+- Tarjeta de crédito
+- Transferencia bancaria
+
+Cada proveedor tiene una API diferente, por lo que se requiere una forma de adaptar esas interfaces al sistema interno.
+Además, antes de procesar un pago, el sistema debe ejecutar una serie de validaciones configurables, como:
+
+- Validar saldo
+- Validar fraude
+- Validar límite de transacciones
+- Estas validaciones deben ejecutarse en cadena, donde cada una decide si el proceso continúa o no.
+
+#### Requisitos
+El sistema debe poder integrar proveedores externos con diferentes interfaces.
+Las validaciones deben poder agregarse o quitarse fácilmente.
+El sistema debe permitir agregar nuevos proveedores de pago sin modificar el código principal.
+
+### Patrón 1: Adapter
+#### 1.1 Nombre del Patrón
+Adapter (Adaptador)
+#### 1.2 Tipo del Patrón
+Estructural
+#### 1.3 Justificación Técnica
+El enunciado establece que cada proveedor tiene una API diferente y se requiere adaptarla al sistema interno. 
+Sin Adapter, el código principal tendría que conocer la API específica de cada proveedor, generando un acoplamiento fuerte
+El patrón Adapter resuelve esto porque:
+
+- Envuelve cada API externa en una clase adaptadora que implementa la interfaz interna del sistema (PaymentProcessor)
+- El código principal solo conoce PaymentProcessor.processPayment() sin importar qué proveedor hay detrás
+- Agregar un nuevo proveedor solo requiere crear un nuevo Adapter, sin tocar el código existente → cumple el principio Open/Closed
+
+### Patrón 2: Chain of Responsibility
+#### 2.1 Nombre del Patrón
+Chain of Responsibility (Cadena de Responsabilidad)
+#### 2.2 Tipo del Patrón
+Comportamental
+#### 2.3 Justificación Técnica
+El enunciado dice que las validaciones deben ejecutarse en cadena donde cada una decide si el proceso continúa o no, 
+y deben poder agregarse o quitarse fácilmente.
+Sin Chain of Responsibility, las validaciones estarían anidadas con muchos if uno por cada validacion
+
+El patrón Chain of Responsibility resuelve esto porque:
+
+- Cada validación es un eslabón independiente que decide si pasa la solicitud al siguiente o la detiene
+- Las validaciones se pueden agregar, quitar o reordenar simplemente modificando la cadena, sin tocar la lógica de cada validador
+- Cada validador tiene una sola responsabilidad → cumple el principio de Single Responsibility
+- La cadena es completamente configurable en tiempo de ejecución
+
+### Patrón 3: Abstract Factory
+#### 3.1 Nombre del Patrón
+Abstract Factory (Fábrica Abstracta)
+#### 3.2 Tipo del Patrón
+Creacional
+#### 3.3 Justificación Técnica
+El enunciado exige agregar nuevos proveedores sin modificar el código principal. Cada proveedor representa una familia 
+completa de objetos relacionados como por ejemplo su procesador, su configuración y su conexión.
+Sin Abstract Factory, el código cliente tendría que instanciar directamente cada proveedor
+
+El patrón Abstract Factory resuelve esto porque:
+
+- Define una interfaz de fábrica (PaymentFactory) que el cliente usa para obtener los objetos sin conocer su implementación concreta
+- Cada proveedor tiene su propia fábrica concreta (PayPalFactory, StripeFactory) que crea su familia de objetos
+- Agregar un nuevo proveedor como Mercado Pago solo requiere crear una nueva fábrica concreta sin modificar nada existente → cumple el principio Open/Closed
+- Garantiza que los objetos creados de una misma familia sean compatibles entre sí
+
