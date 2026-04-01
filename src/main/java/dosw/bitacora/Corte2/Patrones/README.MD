@@ -52,7 +52,7 @@ Agregar un nuevo canal como WhatsApp o Slack solo requiere crear un nuevo decora
 
 ### Diagrama
 
-![img.png](img.png)
+![img.png](../Imagens/img36.png)
 
 ### Patrón 2: Singleton
 #### 2.1 Nombre del Patrón
@@ -74,9 +74,15 @@ como duplicación de mensajes o condiciones de carrera
 
 ### Diagrama
 
-![img_1.png](img_1.png)
+![img_1.png](../Imagens/img37.png)
 
 
 ### Diagrama General
 
-![img_2.png](img_2.png)
+![img_2.png](../Imagens/img38.png)
+
+### Generar cobertura de código con Jacoco
+![img_3.png](../Imagens/img39.png)
+
+### análisis estático del código 
+![img.png](img40.png)

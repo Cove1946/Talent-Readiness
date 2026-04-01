@@ -1,4 +1,4 @@
-package dosw.bitacora.Corte2.Patrones.SistemaNotificaciones;
+package dosw.bitacora.Corte2.Patrones.SistemaNotificaciones.Codigo;
 
 public class NotificationService {
 
