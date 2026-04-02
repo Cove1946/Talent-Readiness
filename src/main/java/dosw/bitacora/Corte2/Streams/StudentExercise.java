@@ -1,4 +1,4 @@
-package dosw.bitacora.Corte2.Semana7;
+package dosw.bitacora.Corte2.Streams;
 
 import java.util.Comparator;
 import java.util.LinkedHashMap;
