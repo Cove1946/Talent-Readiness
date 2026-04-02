@@ -85,7 +85,7 @@ como duplicación de mensajes o condiciones de carrera
 ![img_3.png](../Imagens/img39.png)
 
 ### análisis estático del código 
-![img.png](img40.png)
+![img.png](../Imagens/img40.png)
 
 ### Ejercicio 2: Sistema de Procesamiento de Pagos
 Una plataforma de comercio electrónico necesita procesar pagos usando distintos proveedores:
@@ -158,22 +158,22 @@ El patrón Abstract Factory resuelve esto porque:
 ### Diagramas
 
 #### Adapter
-![img.png](img41.png)
+![img.png](../Imagens/img41.png)
 
 #### Chainf Of Responsability
-![img.png](img42.png)
+![img.png](../Imagens/img42.png)
 
 #### Abstract Factory
-![img.png](img43.png)
+![img.png](../Imagens/img43.png)
 
 #### Diagrama General
-![img.png](img44.png)
+![img.png](../Imagens/img44.png)
 
 ### Generar cobertura de código con Jacoco
-![img.png](img45.png)
+![img.png](../Imagens/img45.png)
 
 ### análisis estático del código 
-![img.png](img46.png)
+![img.png](../Imagens/img46.png)
 
 
 ### Ejercicio 3: Sistema de Reportes de una Plataforma
@@ -246,22 +246,22 @@ El patrón Factory Method resuelve esto porque:
 - A diferencia de Abstract Factory, aquí solo se crea un único tipo de objeto por fábrica, que es exactamente lo que necesita este sistema
 
 #### Diagrama Factory Method
-![img.png](img47.png)
+![img.png](../Imagens/img47.png)
 
 #### Diagrama Builder
-![img.png](img48.png)
+![img.png](../Imagens/img48.png)
 
 #### Diagrama Decorator
-![img.png](img49.png)
+![img.png](../Imagens/img49.png)
 
 #### Diagrama General
-![img.png](img50.png)
+![img.png](../Imagens/img50.png)
 
-![img.png](img51.png)
+![img.png](../Imagens/img51.png)
 
 ### Generar cobertura de código con Jacoco
-![img.png](img52.png)
+![img.png](../Imagens/img52.png)
 
 ### análisis estático del código 
-![img.png](img53.png)
+![img.png](../Imagens/img53.png)
 
