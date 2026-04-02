@@ -258,3 +258,10 @@ El patrón Factory Method resuelve esto porque:
 ![img.png](img50.png)
 
 ![img.png](img51.png)
+
+### Generar cobertura de código con Jacoco
+![img.png](img52.png)
+
+### análisis estático del código 
+![img.png](img53.png)
+
