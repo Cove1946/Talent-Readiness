@@ -318,3 +318,45 @@ el desarrollo de uno o más requerimientos.
 | RI-14 | RF | Módulo de Liga / Ranking | Verificar que la tabla de clasificación se actualiza correctamente tras cada combate finalizado y refleja el orden real por puntos. |
 | RI-15 | RF | Módulo de Notificaciones | Verificar que el entrenador recibe una notificación dentro de la plataforma en menos de 5 segundos tras recibir un reto o finalizar un combate. |
 
+--- 
+
+## 7. Análisis de Ambigüedades
+
+Se identifican aspectos del enunciado que son ambiguos, están incompletos
+o requieren validación directa con el cliente antes de continuar el desarrollo.
+
+---
+
+### 7.1 Aspectos Ambiguos
+
+| ID | Aspecto | Descripción de la ambigüedad | Pregunta al cliente |
+|----|---------|------------------------------|---------------------|
+| AMB-01 | "Buena experiencia durante los combates" | El enunciado menciona preocupación por la experiencia del usuario en combates, pero no define qué significa "buena experiencia": ¿fluidez visual, velocidad de respuesta, diseño intuitivo, ausencia de bugs? | ¿Qué criterios específicos definen una experiencia satisfactoria durante el combate? ¿Existe algún referente o juego similar al que se quiera parecerse? |
+| AMB-02 | "Interacción entre jugadores" | No queda claro el alcance de la interacción: ¿se limita a enviarse retos de combate o incluye chat, sistema de amigos, intercambio de Pokémon, foros u otras formas de comunicación? | ¿Qué tipos de interacción entre jugadores se esperan en la primera versión del sistema? |
+| AMB-03 | "Claridad en el historial de batallas" | El cliente menciona que le preocupa la claridad del historial, pero no especifica qué datos deben mostrarse, con qué nivel de detalle, durante cuánto tiempo se conserva o si debe ser público o privado. | ¿Qué información debe contener el historial de batallas? ¿Es visible para otros jugadores o solo para el entrenador dueño de la cuenta? |
+| AMB-04 | "Liga competitiva" | No se define qué es la liga: ¿tiene temporadas, divisiones, ascensos y descensos, premios? ¿Es una sola liga global o hay ligas por región o nivel? | ¿Cómo está estructurada la liga competitiva? ¿Existen divisiones, temporadas o criterios de ascenso y descenso? |
+| AMB-05 | "Gestionar sus Pokémon" | El término gestionar es amplio. No se especifica si los Pokémon pueden ser capturados, comprados, intercambiados, evolucionados o simplemente seleccionados de un catálogo fijo. | ¿Cómo obtiene un entrenador sus Pokémon? ¿Existe un catálogo predefinido, un sistema de captura, compra o intercambio? |
+
+---
+
+### 7.2 Aspectos Incompletos
+
+| ID | Aspecto | Información faltante | Impacto si no se resuelve |
+|----|---------|----------------------|---------------------------|
+| INC-01 | Reglas del sistema de combate | No se describe el sistema de combate: ¿es por turnos, en tiempo real, basado en estadísticas, con animaciones? ¿Cuántos Pokémon participan por combate? | Sin estas reglas no es posible diseñar ni desarrollar el módulo central del sistema. Bloquea RE-04 completamente. |
+| INC-02 | Origen y catálogo de Pokémon | No se define si los Pokémon provienen de una API externa (como PokéAPI), son creados por el equipo de desarrollo o pueden ser personalizados por el usuario. | Impacta directamente el diseño de la base de datos, el módulo de gestión y las estadísticas de combate. Bloquea RE-02 y RI-09. |
+| INC-03 | Torneos, recompensas y modos adicionales | El cliente menciona estas funcionalidades futuras pero no entrega ningún detalle sobre su estructura, reglas ni cronograma esperado. | Sin esta información no es posible diseñar una arquitectura que las soporte correctamente, arriesgando rediseños costosos. |
+| INC-04 | Plataforma y dispositivos objetivo | No se especifica si la aplicación web debe funcionar también como app móvil, si se priorizará escritorio o si habrá una versión nativa en el futuro. | Afecta decisiones de diseño de interfaz, tecnología frontend y esfuerzo de desarrollo desde las primeras iteraciones. |
+| INC-05 | Modelo de negocio y monetización | No se menciona si la plataforma será gratuita, freemium o de pago, ni si habrá compras dentro del juego, lo que puede afectar el diseño de roles y recompensas. | Sin claridad en el modelo de negocio es difícil priorizar funcionalidades y diseñar el sistema de recompensas futuro. |
+
+---
+
+### 7.3 Aspectos que Requieren Validación con el Cliente
+
+| ID | Aspecto | Razón por la que requiere validación | Riesgo si no se valida |
+|----|---------|--------------------------------------|------------------------|
+| VAL-01 | Número de usuarios simultáneos esperados | El cliente menciona preocupación por la concurrencia pero no da una cifra. Se asumió 1000 usuarios como referencia, pero puede ser muy distinto a la realidad del negocio. | Subdimensionar la infraestructura generaría caídas del sistema; sobredimensionarla generaría costos innecesarios. |
+| VAL-02 | Normativa legal aplicable | No se conoce el país o región de operación de la plataforma, por lo que no es posible determinar qué ley de protección de datos aplica. | Lanzar el sistema sin cumplir la normativa correspondiente puede resultar en sanciones legales o el cierre de la plataforma. |
+| VAL-03 | Criterios de seguridad aceptables | El cliente menciona seguridad como preocupación pero no define el nivel requerido: ¿es suficiente usuario y contraseña o se exige 2FA obligatorio, cifrado en tránsito, auditorías periódicas? | Implementar un nivel de seguridad insuficiente expone la plataforma a vulnerabilidades; uno excesivo puede encarecer y retrasar el desarrollo. |
+| VAL-04 | Definición de "progreso" en la liga | No está claro cómo se calcula el progreso: ¿por puntos, por victorias consecutivas, por tipo de oponente derrotado, por combinación de factores? | Un sistema de puntuación mal diseñado puede percibirse como injusto, afectando la retención y competitividad de la plataforma. |
+| VAL-05 | Rol y permisos del administrador | No se describe qué acciones puede realizar un administrador: ¿puede banear jugadores, modificar Pokémon del sistema, reiniciar la liga, gestionar torneos? | Sin definir esto no es posible diseñar correctamente el módulo de administración ni los permisos del sistema. |
