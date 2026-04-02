@@ -163,3 +163,66 @@ eliminando ambigüedades y añadiendo criterios medibles donde aplique.
 | RI-13 | El sistema debe contar con un mecanismo de matchmaking. | El sistema debe emparejar automáticamente a dos entrenadores para combate basándose en criterios de nivel o puntos en la liga, encontrando un oponente en un tiempo máximo de 60 segundos. |
 | RI-14 | El sistema debe mostrar el ranking de entrenadores en la liga. | El sistema debe mostrar una tabla de clasificación pública con los entrenadores ordenados por puntos en la liga, actualizada en tiempo real tras cada combate finalizado. |
 | RI-15 | El sistema debe notificar a los usuarios sobre eventos relevantes. | El sistema debe enviar notificaciones dentro de la plataforma al entrenador cuando reciba una solicitud de combate, cuando un combate finalice o cuando ascienda de nivel en la liga, en un tiempo máximo de 5 segundos tras el evento. |
+
+## 4. Priorización de Requerimientos
+
+**Criterios utilizados:**
+- **Alta:** Requerimientos críticos para el funcionamiento base del sistema,
+  sin los cuales la aplicación no puede operar ni ofrecer valor al usuario.
+- **Media:** Requerimientos importantes para la calidad y experiencia del sistema,
+  pero que no bloquean el funcionamiento esencial.
+- **Baja:** Requerimientos deseables a futuro, de optimización o extensibilidad,
+  que no afectan el núcleo operativo actual.
+
+---
+
+### Requerimientos Explícitos
+
+| ID    | Requerimiento (resumido) | Prioridad | Justificación |
+|-------|--------------------------|-----------|---------------|
+| RE-01 | Registro de entrenadores | Alta | Es la puerta de entrada al sistema. Sin registro no existe ningún otro flujo funcional. Dependencia directa de todos los demás requerimientos. |
+| RE-02 | Gestión de Pokémon propios | Alta | El Pokémon es la unidad central del juego. Sin esta función no se pueden formar equipos ni realizar combates. |
+| RE-03 | Creación de equipos | Alta | Dependencia directa del combate. Un entrenador no puede combatir sin un equipo formado previamente. |
+| RE-04 | Combates en línea | Alta | Es el núcleo del negocio y la razón principal de la aplicación. Sin esta función el producto no tiene propósito. |
+| RE-05 | Interacción entre jugadores | Alta | Sin la capacidad de retarse entre jugadores, el sistema de combate no puede iniciarse. |
+| RE-06 | Progreso del entrenador en la liga | Media | Enriquece la experiencia y motiva la retención, pero no bloquea el funcionamiento del combate en sí. |
+| RE-07 | Buena experiencia durante combates | Media | Afecta directamente la satisfacción del usuario, pero su medición y ajuste pueden refinarse en iteraciones posteriores al lanzamiento inicial. |
+| RE-08 | Soporte de múltiples usuarios simultáneos | Alta | Sin capacidad de concurrencia adecuada, el sistema colapsaría en condiciones reales de uso, comprometiendo toda la plataforma. |
+| RE-09 | Seguridad de las cuentas | Alta | La ausencia de seguridad expone datos de usuarios y puede generar pérdida de confianza, sanciones legales y abandono de la plataforma. |
+| RE-10 | Historial de batallas | Media | Aporta valor a la experiencia del usuario y a la transparencia, pero no es indispensable para que el combate funcione. |
+| RE-11 | Escalabilidad para torneos | Baja | Funcionalidad futura no definida completamente. Debe contemplarse en el diseño arquitectónico pero no implementarse en la fase inicial. |
+| RE-12 | Escalabilidad para recompensas | Baja | Igual que los torneos, es una funcionalidad futura. Se debe diseñar pensando en ella, pero no desarrollar en esta etapa. |
+| RE-13 | Escalabilidad para modos de juego adicionales | Baja | No está definida ni priorizada por el cliente. Su valor es arquitectónico a largo plazo. |
+
+---
+
+### Requerimientos Implícitos
+
+| ID    | Requerimiento (resumido) | Prioridad | Justificación |
+|-------|--------------------------|-----------|---------------|
+| RI-01 | Autenticación de usuarios | Alta | Sin autenticación no hay control de acceso ni identidad de entrenador. Es prerequisito de absolutamente todos los flujos del sistema. |
+| RI-02 | Persistencia de datos | Alta | Sin base de datos no existe progreso, historial ni estado de ningún tipo. El sistema sería completamente volátil e inútil. |
+| RI-03 | Recuperación de contraseña | Media | Mejora la seguridad y accesibilidad de la cuenta, pero no bloquea el funcionamiento inicial del sistema. |
+| RI-04 | Validación de formularios | Alta | Sin validación el sistema puede recibir datos corruptos o maliciosos que comprometan la integridad de la base de datos y la seguridad. |
+| RI-05 | Roles de usuario | Alta | El rol de administrador es necesario para gestionar la liga, los usuarios y el contenido del sistema desde el inicio. |
+| RI-06 | Búsqueda de jugadores | Alta | Es el mecanismo mediante el cual los entrenadores se encuentran para combatir. Sin él, los combates no pueden iniciarse manualmente. |
+| RI-07 | Sincronización en tiempo real del combate | Alta | Un combate por turnos en línea requiere sincronización inmediata. Sin esto, el combate es técnicamente imposible o inconsistente. |
+| RI-08 | Manejo de desconexiones | Media | Importante para la confiabilidad, pero puede implementarse de forma básica en una primera versión y refinarse posteriormente. |
+| RI-09 | Estadísticas de Pokémon | Alta | Sin estas estadísticas el jugador no puede tomar decisiones de combate informadas, lo que hace el sistema injugable. |
+| RI-10 | Interfaz responsiva | Media | Mejora el alcance del producto, pero puede priorizarse escritorio en la primera versión si el cliente así lo define. |
+| RI-11 | Logs de actividad | Media | Esencial para auditoría y soporte técnico, pero no impacta directamente la experiencia del usuario final en el lanzamiento. |
+| RI-12 | Cumplimiento de protección de datos | Alta | Es una obligación legal desde el primer día de operación. Su ausencia puede generar sanciones antes del lanzamiento oficial. |
+| RI-13 | Matchmaking automático | Media | Complementa el sistema de combate, pero en una primera versión puede reemplazarse por búsqueda manual de oponentes (RI-06). |
+| RI-14 | Ranking de entrenadores | Media | Refuerza la competitividad y retención, pero requiere primero que existan combates registrados. Puede implementarse en una segunda iteración. |
+| RI-15 | Notificaciones en plataforma | Media | Mejora la experiencia y la retención del usuario, pero no es bloqueante para el funcionamiento del sistema en su versión inicial. |
+
+---
+
+### Resumen de Prioridades
+
+| Prioridad | Cantidad | IDs |
+|-----------|----------|-----|
+| Alta      | 16       | RE-01, RE-02, RE-03, RE-04, RE-05, RE-08, RE-09, RI-01, RI-02, RI-04, RI-05, RI-06, RI-07, RI-09, RI-12 |
+| Media     | 9        | RE-06, RE-07, RE-10, RI-03, RI-08, RI-10, RI-11, RI-13, RI-14, RI-15 |
+| Baja      | 3        | RE-11, RE-12, RE-13 |
+
