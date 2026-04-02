@@ -282,3 +282,39 @@ el desarrollo de uno o más requerimientos.
 | BLQ-05 | RE-02, RI-09 | **Catálogo de Pokémon no definido.** No se sabe si los Pokémon serán predefinidos por el sistema, creados por el usuario o consumidos desde una API externa (como PokéAPI).       | Acordar con el cliente el origen de los datos de Pokémon antes de desarrollar el módulo de gestión. |
 | BLQ-06 | RI-13 | **Criterios de matchmaking sin definir.** No está claro si el emparejamiento será por nivel, puntos, región u otro criterio, lo que impide diseñar el algoritmo.                  | Validar con el cliente las reglas de emparejamiento en una sesión de levantamiento de requerimientos. |
 | BLQ-07 | RI-15 | **Canal de notificaciones no definido.** No se especifica si las notificaciones serán solo dentro de la plataforma, por correo electrónico, push notifications o una combinación. | Definir el alcance de las notificaciones con el cliente antes de iniciar el desarrollo del módulo. |
+
+---
+
+## 6. Matriz de Trazabilidad
+
+| ID    | Tipo | Módulo / Caso de uso asociado | Posible prueba o validación |
+|-------|------|-------------------------------|----------------------------|
+| RE-01 | RF | Módulo de Registro | Verificar que un usuario puede crear una cuenta con datos válidos y que el sistema rechaza datos incompletos o duplicados. |
+| RE-02 | RF | Módulo de Gestión de Pokémon | Verificar que el entrenador puede agregar, editar, visualizar y eliminar Pokémon de su colección correctamente. |
+| RE-03 | RF | Módulo de Equipos | Verificar que se puede crear un equipo con entre 1 y 6 Pokémon y que el sistema rechaza equipos fuera de ese rango. |
+| RE-04 | RF | Módulo de Combate | Verificar que dos entrenadores con equipos formados pueden iniciar y completar un combate en línea por turnos. |
+| RE-05 | RF | Módulo de Interacción / Social | Verificar que un entrenador puede enviar y recibir solicitudes de combate a otros jugadores registrados. |
+| RE-06 | RF | Módulo de Liga / Perfil | Verificar que el perfil muestra victorias, derrotas, puntos y nivel actualizados tras cada combate finalizado. |
+| RE-07 | RNF | Módulo de Combate / UX | Medir el tiempo de respuesta de la interfaz de combate ante acciones del usuario; debe ser menor a 2 segundos. |
+| RE-08 | RNF | Infraestructura / Concurrencia | Ejecutar prueba de carga con al menos 1000 usuarios simultáneos y verificar que el tiempo de respuesta no supere 3 segundos. |
+| RE-09 | RNF | Módulo de Autenticación / Seguridad | Verificar que las contraseñas se almacenan hasheadas, que la cuenta se bloquea tras 5 intentos fallidos y que el 2FA funciona correctamente. |
+| RE-10 | RF | Módulo de Historial | Verificar que el historial muestra fecha, oponente, resultado, duración y Pokémon usados para cada batalla registrada. |
+| RE-11 | RNF | Arquitectura del sistema | Revisar que el diseño arquitectónico permite agregar un módulo de torneos sin modificar los módulos existentes. |
+| RE-12 | RNF | Arquitectura del sistema | Verificar que existe una interfaz o API interna que permita asignar recompensas sin cambios estructurales en el núcleo. |
+| RE-13 | RNF | Arquitectura del sistema | Verificar que la lógica de combate está abstraída de forma que permita integrar nuevos modos como módulos independientes. |
+| RI-01 | RF | Módulo de Autenticación | Verificar que un usuario registrado puede iniciar sesión y que el token de sesión expira correctamente a las 24 horas. |
+| RI-02 | RNF | Infraestructura / Base de datos | Verificar que los datos persisten correctamente tras reinicios del sistema y que no se pierden ante fallos controlados. |
+| RI-03 | RF | Módulo de Autenticación | Verificar que el enlace de recuperación de contraseña llega al correo registrado y expira a los 30 minutos. |
+| RI-04 | RF | Todos los formularios del sistema | Verificar que cada campo muestra un mensaje de error específico ante datos inválidos antes de permitir el envío. |
+| RI-05 | RF | Módulo de Administración / Roles | Verificar que un administrador accede a funciones restringidas y que un entrenador no puede acceder a ellas. |
+| RI-06 | RF | Módulo de Búsqueda de Jugadores | Verificar que un entrenador puede buscar a otro por nombre de usuario y visualizar su perfil público correctamente. |
+| RI-07 | RNF | Módulo de Combate / Tiempo real | Medir la latencia de sincronización entre ambos jugadores durante un combate; debe ser menor a 500 ms. |
+| RI-08 | RNF | Módulo de Combate / Resiliencia | Simular la desconexión de un jugador y verificar que el estado del combate se conserva al menos 60 segundos. |
+| RI-09 | RF | Módulo de Gestión de Pokémon | Verificar que cada Pokémon muestra nombre, tipo, nivel, HP, ataque, defensa y movimientos disponibles. |
+| RI-10 | RNF | Interfaz general del sistema | Verificar que todas las vistas se renderizan correctamente en resoluciones de escritorio, tablet y móvil sin pérdida de funcionalidad. |
+| RI-11 | RNF | Módulo de Logs / Auditoría | Verificar que el sistema registra con marca de tiempo los eventos de autenticación, combate e intentos fallidos de acceso. |
+| RI-12 | RNF | Módulo de Registro / Legal | Verificar que el usuario debe aceptar explícitamente la política de privacidad durante el registro y que no puede omitirla. |
+| RI-13 | RF | Módulo de Matchmaking | Verificar que el sistema empareja dos entrenadores automáticamente en un tiempo máximo de 60 segundos. |
+| RI-14 | RF | Módulo de Liga / Ranking | Verificar que la tabla de clasificación se actualiza correctamente tras cada combate finalizado y refleja el orden real por puntos. |
+| RI-15 | RF | Módulo de Notificaciones | Verificar que el entrenador recibe una notificación dentro de la plataforma en menos de 5 segundos tras recibir un reto o finalizar un combate. |
+
