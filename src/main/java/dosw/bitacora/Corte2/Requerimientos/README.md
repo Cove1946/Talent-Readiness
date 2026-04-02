@@ -226,3 +226,59 @@ eliminando ambigüedades y añadiendo criterios medibles donde aplique.
 | Media     | 9        | RE-06, RE-07, RE-10, RI-03, RI-08, RI-10, RI-11, RI-13, RI-14, RI-15 |
 | Baja      | 3        | RE-11, RE-12, RE-13 |
 
+
+## 5. Identificación de Dependencias y Bloqueos
+
+---
+
+### 5.1 Mapa de Dependencias
+
+Vamos a considerar que un requerimiento **depende** de otro cuando no puede implementarse ni probarse
+sin que el requerimiento del que depende esté previamente resuelto.
+
+| ID | Requerimiento (resumido) | Depende de | Tipo de dependencia |
+|----|--------------------------|------------|---------------------|
+| RE-01 | Registro de entrenadores | RI-02 | El registro debe persistirse en base de datos. |
+| RI-01 | Autenticación de usuarios | RE-01 | Solo puede autenticarse un usuario previamente registrado. |
+| RE-02 | Gestión de Pokémon | RI-01, RI-02 | Requiere sesión activa y persistencia de datos. |
+| RE-03 | Creación de equipos | RE-02, RI-01 | Solo se pueden armar equipos con Pokémon ya registrados en la colección. |
+| RE-04 | Combates en línea | RE-03, RI-01, RI-07 | Requiere equipos formados, sesión activa y sincronización en tiempo real. |
+| RE-05 | Interacción entre jugadores | RI-01, RI-06 | Requiere que ambos jugadores estén autenticados y puedan encontrarse. |
+| RE-06 | Progreso del entrenador | RE-04, RI-02 | El progreso se genera a partir de combates finalizados y persistidos. |
+| RE-07 | Experiencia durante combates | RE-04, RI-07 | Solo puede evaluarse y optimizarse cuando el combate ya funciona. |
+| RE-08 | Soporte de usuarios simultáneos | RI-02, RI-07 | Depende de la infraestructura de base de datos y comunicación en tiempo real. |
+| RE-09 | Seguridad de cuentas | RI-01, RE-01 | La seguridad se aplica sobre el sistema de autenticación y registro. |
+| RE-10 | Historial de batallas | RE-04, RI-02 | Solo puede generarse historial si los combates se ejecutan y persisten correctamente. |
+| RI-03 | Recuperación de contraseña | RE-01, RI-01 | Solo aplica sobre cuentas existentes con sistema de autenticación activo. |
+| RI-04 | Validación de formularios | RE-01, RE-02, RE-03 | Se aplica sobre todos los formularios del sistema, que deben existir primero. |
+| RI-05 | Roles de usuario | RI-01, RI-02 | Los roles se asignan al momento del registro y se gestionan desde la base de datos. |
+| RI-06 | Búsqueda de jugadores | RI-01, RI-02 | Requiere usuarios registrados y persistidos para poder buscarlos. |
+| RI-07 | Sincronización en tiempo real | RE-04, RE-08 | Depende del módulo de combate y de la infraestructura de concurrencia. |
+| RI-08 | Manejo de desconexiones | RI-07, RE-04 | Solo ocurre en el contexto de un combate sincronizado en tiempo real. |
+| RI-09 | Estadísticas de Pokémon | RE-02, RI-02 | Las estadísticas pertenecen a Pokémon ya registrados y persistidos. |
+| RI-10 | Interfaz responsiva | RE-01 a RE-10 | Aplica sobre todas las vistas del sistema, que deben existir primero. |
+| RI-11 | Logs de actividad | RI-01, RE-04, RE-09 | Se registran eventos de autenticación, combates y seguridad. |
+| RI-12 | Protección de datos | RE-01, RI-02 | Se aplica desde el momento en que se recolectan y almacenan datos personales. |
+| RI-13 | Matchmaking automático | RE-05, RI-06, RE-04 | Requiere que los jugadores puedan encontrarse y que el combate pueda iniciarse. |
+| RI-14 | Ranking de entrenadores | RE-06, RE-04, RI-02 | El ranking se calcula a partir del progreso generado por combates persistidos. |
+| RI-15 | Notificaciones en plataforma | RE-05, RI-13, RE-04 | Las notificaciones se disparan por eventos como retos, matchmaking y resultados. |
+| RE-11 | Escalabilidad para torneos | RE-04, RI-13, RI-14 | Un torneo presupone combates, matchmaking y ranking ya funcionales. |
+| RE-12 | Escalabilidad para recompensas | RE-06, RI-14 | Las recompensas dependen del progreso y ranking del entrenador. |
+| RE-13 | Escalabilidad para modos de juego | RE-04, RE-03 | Cualquier nuevo modo parte de la lógica base de equipos y combate. |
+
+---
+
+### 5.2 Identificación de Bloqueos
+
+Vamos a considerar como **bloqueo** a una condición externa o interna que puede impedir o retrasar
+el desarrollo de uno o más requerimientos.
+
+| ID Bloqueo | Requerimientos afectados | Descripción del bloqueo                                                                                                                                                           | Estrategia de mitigación |
+|------------|--------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------|
+| BLQ-01 | RE-04, RI-07 | **Tecnología de tiempo real no definida.** No se ha especificado que otra tecnología se usara para el combate en línea.                                                           | Realizar un spike técnico temprano para validar la tecnología antes de iniciar el desarrollo del módulo de combate. |
+| BLQ-02 | RE-11, RE-12, RE-13 | **Requerimientos futuros sin definir.** El cliente no ha especificado reglas, estructura ni flujos de torneos, recompensas o modos adicionales.                                   | Documentar como requerimientos pendientes y diseñar la arquitectura con interfaces abiertas (módulos desacoplados). |
+| BLQ-03 | RI-12, RE-09 | **Marco legal no identificado.** No se sabe en qué país operará la plataforma, por lo que no se puede definir la normativa de protección de datos aplicable.                      | Consultar con el cliente la región de operación y asesorarse legalmente antes del lanzamiento. |
+| BLQ-04 | RE-08, RI-07 | **Infraestructura de servidores no definida.** No se conoce el proveedor de nube ni la capacidad de los servidores, lo que impide dimensionar correctamente la concurrencia.      | Definir con el cliente el presupuesto de infraestructura y realizar pruebas de carga en un entorno controlado. |
+| BLQ-05 | RE-02, RI-09 | **Catálogo de Pokémon no definido.** No se sabe si los Pokémon serán predefinidos por el sistema, creados por el usuario o consumidos desde una API externa (como PokéAPI).       | Acordar con el cliente el origen de los datos de Pokémon antes de desarrollar el módulo de gestión. |
+| BLQ-06 | RI-13 | **Criterios de matchmaking sin definir.** No está claro si el emparejamiento será por nivel, puntos, región u otro criterio, lo que impide diseñar el algoritmo.                  | Validar con el cliente las reglas de emparejamiento en una sesión de levantamiento de requerimientos. |
+| BLQ-07 | RI-15 | **Canal de notificaciones no definido.** No se especifica si las notificaciones serán solo dentro de la plataforma, por correo electrónico, push notifications o una combinación. | Definir el alcance de las notificaciones con el cliente antes de iniciar el desarrollo del módulo. |
