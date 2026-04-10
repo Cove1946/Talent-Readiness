@@ -13,7 +13,6 @@
 		<relativePath/>
 	</parent>
 
-	<!-- Identidad del proyecto (BITÁCORA) -->
 	<groupId>edu.dosw.bootcamp</groupId>
 	<artifactId>dosw-bitacora-tecnica</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
@@ -21,47 +20,97 @@
 	<description>Bitácora técnica de nivelación – DOSW Bootcamp</description>
 
 	<url/>
-
-	<licenses>
-		<license/>
-	</licenses>
-
-	<developers>
-		<developer/>
-	</developers>
-
+	<licenses><license/></licenses>
+	<developers><developer/></developers>
 	<scm>
-		<connection/>
-		<developerConnection/>
-		<tag/>
-		<url/>
+		<connection/><developerConnection/><tag/><url/>
 	</scm>
 
 	<properties>
 		<java.version>21</java.version>
+		<jacoco.version>0.8.11</jacoco.version>
+		<sonar.projectKey>dosw-bitacora-tecnica</sonar.projectKey>
+		<sonar.projectName>DOSW Bitácora Técnica</sonar.projectName>
+		<sonar.host.url>http://localhost:9000</sonar.host.url>
+
+		<sonar.organization>cove1946</sonar.organization>
+		<sonar.projectKey>Cove1946_Talent-Readiness</sonar.projectKey>
+		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+
 	</properties>
 
+
+
 	<dependencies>
-		<!-- Dependencia base (aunque no se use Spring aún) -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
 		</dependency>
 
-		<!-- Testing -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<!-- JUnit 5 -->
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>RELEASE</version>
+			<scope>compile</scope>
+		</dependency>
+
 	</dependencies>
 
 	<build>
 		<plugins>
+
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+			</plugin>
+
+
+			<!-- Jacoco -->
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>${jacoco.version}</version>
+				<executions>
+					<execution>
+						<id>prepare-agent</id>
+						<goals><goal>prepare-agent</goal></goals>
+					</execution>
+					<execution>
+						<id>report</id>
+						<phase>verify</phase>
+						<goals><goal>report</goal></goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- Sonar -->
+			<plugin>
+				<groupId>org.sonarsource.scanner.maven</groupId>
+				<artifactId>sonar-maven-plugin</artifactId>
+				<version>3.10.0.2594</version>
+			</plugin>
+
 		</plugins>
 	</build>
 
